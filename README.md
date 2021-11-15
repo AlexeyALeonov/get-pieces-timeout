@@ -16,11 +16,11 @@ Set-ExecutionPolicy Unrestricted
 
 ## Usage
 ```
-@(sls "GET_AUDIT|GET_REPAIR" X:\storagenode3\storagenode.log) | .\Get-PiecesTimeout.ps1
+@((sls "GET_AUDIT|GET_REPAIR" X:\storagenode3\storagenode.log).Line) | .\Get-PiecesTimeout.ps1
 ```
 or
 ```
-.\Get-PiecesTimeout.ps1 @(sls "GET_AUDIT|GET_REPAIR" X:\storagenode3\storagenode.log)
+.\Get-PiecesTimeout.ps1 @((sls "GET_AUDIT|GET_REPAIR" X:\storagenode3\storagenode.log).Line)
 ```
 
 # Using bash/wsl
