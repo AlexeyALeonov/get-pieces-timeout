@@ -2,7 +2,7 @@
 
 This script allows you to get pieces download/upload report based on the logs from the storagenode.
 
-Perhaps it's better to use `jq` from the [wsl/wsl2](https://docs.microsoft.com/en-us/windows/wsl/) for performance reasons, see [Using bash/wsl](#using-bash-wsl) below.
+Perhaps it's better to use `jq` from the [wsl/wsl2](https://docs.microsoft.com/en-us/windows/wsl/) for performance reasons, see [Using bash/wsl](#using-bashwsl) below.
 
 ## Configure PowerShell execution policy
 In the elevated PowerShell
