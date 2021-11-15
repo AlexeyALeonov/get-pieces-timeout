@@ -1,6 +1,6 @@
-# get-pieces-timeout
+# Get-PiecesTimeout.ps1
 
-This script allows to get pieces download/upload report based on the logs from the storagenode.
+This script allows you to get pieces download/upload report based on the logs from the storagenode.
 
 ## Configure PowerShell execution policy
 In the elevated PowerShell
@@ -14,5 +14,10 @@ Set-ExecutionPolicy Unrestricted
 
 ## Usage
 ```
-sls "GET_AUDIT|GET_REPAIR" X:\storagenode3\storagenode.log | Get-PiecesTimeout.ps1
+@(sls "GET_AUDIT|GET_REPAIR" X:\storagenode3\storagenode.log) | .\Get-PiecesTimeout.ps1
+```
+or
+```
+.\Get-PiecesTimeout.ps1 @(sls "GET_AUDIT|GET_REPAIR" X:\storagenode3\storagenode.log)
+```
 ```

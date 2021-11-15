@@ -23,8 +23,8 @@ function Join-HashTableTree {
         $oldValue = $output[$key]
         $newValue = $JoinedHashtable[$key]
 
-        $output[$key] =
-        if ($oldValue -is [hashtable] -and $newValue -is [hashtable]) { $oldValue + $newValue }
+        $output[$key] = 
+        if ($oldValue -is [hashtable] -and $newValue -is [hashtable]) { $oldValue | Join-HashTableTree $newValue }
         elseif ($oldValue -is [array] -and $newValue -is [array]) { $oldValue + $newValue }
         else { $newValue }
     }
@@ -34,12 +34,12 @@ function Join-HashTableTree {
 
 $report = @{}
 
-$Lines | %{
+$Lines | ForEach-Object{
     $line = $_ -split "`t";
     $body = $line[4] | ConvertFrom-Json;
     $date = $line[0]; 
     $operation = $line[3]; 
-    $report = $report | Join-HashTableTree @{SatelliteID = $body."Satellite ID"; ($body."Piece ID") = @{($date) = $operation}}
+    $report = $report | Join-HashTableTree @{($body."Satellite ID") = @{($body."Piece ID") = @{($date) = $operation}}}
 }
 
 $report | ConvertTo-Json
